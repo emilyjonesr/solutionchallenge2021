@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'screens/chat-screen.dart';
+import 'screens/login-sceen.dart';
+import 'screens/map-screen.dart';
+import 'screens/profile-screen.dart';
+
+
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Flutter Code Sample';
+  static String _title = 'hello';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
       home: MyStatefulWidget(),
     );
@@ -26,19 +32,15 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Map',
-      style: optionStyle,
-    ),
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static List<Widget> _widgetOptions = <Widget>[
+    Map(),
     Text(
       'Index 1: Chat',
       style: optionStyle,
     ),
     Text(
-      'Index 2: Home',
+      'Index 2: Profile',
       style: optionStyle,
     ),
   ];
@@ -53,7 +55,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BottomNavigationBar Sample'),
+        title: Text('Name'),
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -61,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_outlined),
+            icon: Icon(Icons.location_on_outlined),
             label: 'Map',
           ),
           BottomNavigationBarItem(
@@ -69,8 +71,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Chat',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.account_circle_outlined),
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -80,39 +82,3 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
-
-// void main() => runApp(MyApp());
-//
-// class MyApp extends StatefulWidget {
-//   @override
-//   _MyAppState createState() => _MyAppState();
-// }
-//
-// class _MyAppState extends State<MyApp> {
-//   GoogleMapController mapController;
-//
-//   final LatLng _center = const LatLng(45.521563, -122.677433);
-//
-//   void _onMapCreated(GoogleMapController controller) {
-//     mapController = controller;
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: Text('Maps Sample App'),
-//           backgroundColor: Colors.green[700],
-//         ),
-//         body: GoogleMap(
-//           onMapCreated: _onMapCreated,
-//           initialCameraPosition: CameraPosition(
-//             target: _center,
-//             zoom: 11.0,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
